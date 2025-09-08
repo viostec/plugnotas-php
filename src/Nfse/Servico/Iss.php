@@ -18,7 +18,7 @@ class Iss extends BuilderAbstract
 
     public function setAliquota($aliquota)
     {
-        if (!v::numeric()->validate($aliquota)) {
+        if (!v::NumericVal()->validate($aliquota)) {
             throw new ValidationError(
                 'É necessário informar um valor numérico para aliquota.'
             );
@@ -88,7 +88,7 @@ class Iss extends BuilderAbstract
 
     public function setValor($valor)
     {
-        if (!v::numeric()->validate($valor)) {
+        if (!v::NumericVal()->validate($valor)) {
             throw new ValidationError(
                 'É necessário informar um valor numérico para o campo valor.'
             );
@@ -103,7 +103,7 @@ class Iss extends BuilderAbstract
 
     public function setValorRetido($valorRetido)
     {
-        if (!v::numeric()->validate($valorRetido)) {
+        if (!v::NumericVal()->validate($valorRetido)) {
             throw new ValidationError(
                 'É necessário informar um valor numérico para o campo valorRetido.'
             );
