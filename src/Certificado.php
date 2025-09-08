@@ -113,6 +113,6 @@ class Certificado extends BuilderAbstract implements ICertificado
         }
 
         $communication = $this->getCallApiInstance($this->configuration);
-        return $communication->sendWithFiles('PUT', "/certificado/${idCertificado}", $this->toArray());
+        return $communication->sendWithFiles('PUT', "/certificado/{$idCertificado}", $this->toArray());
     }
 }
