@@ -92,7 +92,7 @@ class Nfse extends BuilderAbstract implements IDfe
 
     public function setNaturezaTributacao($naturezaTributacao)
     {
-        if (!v::in([1,2,3,4,5,6])->validate($naturezaTributacao)) {
+        if (!v::in([1,2,3,4,5,6, 0, null])->validate($naturezaTributacao)) {
             throw new ValidationError(
                 'Tipo de Natureza da Tributação inválido.'
             );
