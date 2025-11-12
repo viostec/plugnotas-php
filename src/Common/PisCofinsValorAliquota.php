@@ -12,6 +12,8 @@ class PisCofinsValorAliquota extends BuilderAbstract
     private $valor;
     private $cst;
 
+    private $retido;
+
     public function __construct($valor = 0, $aliquota = 0, $cst = 0)
     {
         $this->setAliquota($aliquota);
@@ -63,5 +65,14 @@ class PisCofinsValorAliquota extends BuilderAbstract
     {
         return $this->cst;
     }
-    
+
+    public function setRetido(bool $retido): void
+    {
+        $this->retido = $retido;
+    }
+
+    public function getRetido(): ?bool
+    {
+        return $this->retido;
+    }
 }
