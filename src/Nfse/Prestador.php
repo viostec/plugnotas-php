@@ -29,6 +29,7 @@ class Prestador extends BuilderAbstract
     private $inscricaoEstadual;
     private $nomeFantasia;
     private $razaoSocial;
+    private $regimeApuracaoTributaria;
     private $regimeTributario;
     private $regimeTributarioEspecial;
     private $simplesNacional;
@@ -184,6 +185,16 @@ class Prestador extends BuilderAbstract
     public function getRazaoSocial()
     {
         return $this->razaoSocial;
+    }
+
+    public function setRegimeApuracaoTributaria(int $regimeApuracaoTributaria): void
+    {
+        $this->regimeApuracaoTributaria = $regimeApuracaoTributaria;
+    }
+
+    public function getRegimeApuracaoTributaria(): int
+    {
+        return $this->regimeApuracaoTributaria;
     }
 
     public function setRegimeTributario($regimeTributario)
