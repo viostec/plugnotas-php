@@ -32,6 +32,7 @@ class Nfse extends BuilderAbstract implements IDfe
     private $idIntegracao;
     private $impressao;
     private $prestador;
+    private $regimeApuracaoTributaria = 0;
     private $rps;
     private $servico;
     private $substituicao;
@@ -122,6 +123,16 @@ class Nfse extends BuilderAbstract implements IDfe
     public function getPrestador()
     {
         return $this->prestador;
+    }
+
+    public function setRegimeApuracaoTributaria(int $regimeApuracaoTributaria): void
+    {
+        $this->regimeApuracaoTributaria = $regimeApuracaoTributaria;
+    }
+
+    public function getRegimeApuracaoTributaria(): int
+    {
+        return $this->regimeApuracaoTributaria;
     }
 
     public function setRps(Rps $rps)
