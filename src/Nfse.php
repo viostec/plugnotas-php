@@ -32,7 +32,7 @@ class Nfse extends BuilderAbstract implements IDfe
     private $idIntegracao;
     private $impressao;
     private $prestador;
-    private $regimeApuracaoTributaria = 0;
+    private $regimeApuracaoTributaria;
     private $rps;
     private $servico;
     private $substituicao;
