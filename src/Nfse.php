@@ -130,7 +130,7 @@ class Nfse extends BuilderAbstract implements IDfe
         $this->regimeApuracaoTributaria = $regimeApuracaoTributaria;
     }
 
-    public function getRegimeApuracaoTributaria(): int
+    public function getRegimeApuracaoTributaria(): ?int
     {
         return $this->regimeApuracaoTributaria;
     }
