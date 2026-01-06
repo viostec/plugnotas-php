@@ -111,6 +111,7 @@ class ServicoTest extends TestCase
         $servico = new Servico();
         $servico->setCnae('4751201');
         $servico->setCodigo('1.02');
+        $servico->setCodigoNbs('1.0201.00.00');
         $servico->setCodigoCidadeIncidencia('4115200');
         $servico->setCodigoTributacao('4115200');
         $servico->setDeducao($deducao);
@@ -126,6 +127,7 @@ class ServicoTest extends TestCase
 
         $this->assertSame($servico->getCnae(), '4751201');
         $this->assertSame($servico->getCodigo(), '1.02');
+        $this->assertSame($servico->getCodigoNbs(), '1.0201.00.00');
         $this->assertSame($servico->getCodigoCidadeIncidencia(), '4115200');
         $this->assertSame($servico->getCodigoTributacao(), '4115200');
         $this->assertSame($servico->getDeducao()->getTipo(), 99);
@@ -176,5 +178,5 @@ class ServicoTest extends TestCase
         $this->assertTrue($servico->validate());
     }
 
-  
+
 }

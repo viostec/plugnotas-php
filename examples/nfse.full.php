@@ -50,9 +50,9 @@ try {
     $enderecoPrestador->setDescricaoCidade('Maringá');
     $enderecoPrestador->setEstado('PR');
     $enderecoPrestador->setCep('87.020-025');
-    
+
     $telefonePrestador = new Telefone('44', '1234-1234');
-    
+
     $prestador = new Prestador();
     $prestador->setCpfCnpj('00.000.000/0001-91');
     $prestador->setInscricaoMunicipal('8214100099');
@@ -67,7 +67,7 @@ try {
     $prestador->setEndereco($enderecoPrestador);
     $prestador->setTelefone($telefonePrestador);
     $prestador->setEmail('teste@plugnotas.com.br');
-    
+
     // Criando os objetos auxiliares necessários e o objeto Tomador
     $enderecoTomador = new Endereco();
     $enderecoTomador->setTipoLogradouro('Avenida');
@@ -108,8 +108,8 @@ try {
     $deducao = new Deducao();
     $deducao->setTipo(99);
     $deducao->setDescricao('Teste de deducao');
-    
-    
+
+
     $iss = new Iss();
     $iss->setTipoTributacao(1);
     $iss->setExigibilidade(1);
@@ -119,12 +119,12 @@ try {
     $iss->setValorRetido(1.23);
     $iss->setProcessoSuspensao('1234');
 
-    
+
     $obra = new Obra();
     $obra->setArt('6270201');
     $obra->setCodigo('21');
     $obra->setCei('12345678910');
-    
+
     $retencao = new Retencao();
     $retencao->setPis(new PisCofinsValorAliquota(606.60, 6.06, 0.00));
     $retencao->setCofins(new PisCofinsValorAliquota(100.10, 1.01,0.00));
@@ -134,7 +134,7 @@ try {
     $retencao->setOutrasRetencoes(505.50);
     $retencao->setCpp(new ValorAliquota(303.30, 3.03));
 
-    
+
     $valor = new Valor();
     $valor->setServico(0.06);
     $valor->setBaseCalculo(0.01);
@@ -147,12 +147,13 @@ try {
 
 
      $ibpt = new Ibpt();
-     $ibpt->setSimplificado($aliquotaSimplificado);   
+     $ibpt->setSimplificado($aliquotaSimplificado);
      $ibpt->setDetalhado($aliquotaDetalahdo);
-    
+
     $services = [];
     $servico = new Servico();
     $servico->setCodigo('1.02');
+    $servico->setCodigoNbs('1.0201.00.00');
     $servico->setIdIntegracao('A001XT');
     $servico->setDiscriminacao('Programação de software');
     $servico->setCodigoTributacao('4115200');
@@ -170,19 +171,19 @@ try {
     $servico->setIbpt($ibpt);
     $servico->setResponsavelRetencao(2);
     array_push($services, $servico->toArray());
-      
-      
-    
-    
+
+
+
+
 
     // Criando os objetos auxiliares necessários e o objeto Rps
     $dateEmission = new \DateTime('now');
-    
+
 
     $rps = new Rps();
     $rps->setDataEmissao($dateEmission);
     $rps->setCompetencia($dateEmission);
-  
+
 
 
     // Criando os objetos auxiliares necessários e o objeto CidadePrestacao
@@ -216,8 +217,8 @@ try {
 
     $camposExtras = new CamposExtras();
     $camposExtras->setCopiasEmail(['teste@plugnotas.com.br','teste2@plugnotas.com.br']);
-    
-  
+
+
     $parcelas = new Parcelas();
     $parcelas->setTipoPagamento(1);
     $parcelas->setNumero(1);

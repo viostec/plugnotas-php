@@ -25,6 +25,7 @@ class Servico extends BuilderAbstract
     private $cnae;
     private $codigo;
     private $codigoCidadeIncidencia;
+    private $codigoNbs;
     private $codigoTributacao;
     private $deducao;
     private $descricaoCidadeIncidencia;
@@ -42,7 +43,6 @@ class Servico extends BuilderAbstract
     private $tributavel;
     private $responsavelRetencao;
     private $ibpt;
-
 
     public function setCnae($cnae)
     {
@@ -72,6 +72,16 @@ class Servico extends BuilderAbstract
     public function getCodigoCidadeIncidencia()
     {
         return $this->codigoCidadeIncidencia;
+    }
+
+    public function setCodigoNbs($codigo)
+    {
+        $this->codigoNbs = $codigo;
+    }
+
+    public function getCodigoNbs()
+    {
+        return $this->codigoNbs;
     }
 
     public function setCodigoTributacao($codigoTributacao)
@@ -172,7 +182,7 @@ class Servico extends BuilderAbstract
     }
 
     public function setObra(Obra $obra)
-    {  
+    {
         $this->obra = $obra;
     }
 
@@ -238,7 +248,7 @@ class Servico extends BuilderAbstract
         );
     }
     $this->responsavelRetencao = $responsavelRetencao;
- 
+
     }
 
     public function getResponsavelRetencao()
