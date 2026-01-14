@@ -46,7 +46,7 @@ class Nfse extends BuilderAbstract implements IDfe
     private $parcelas;
     private $informacoesComplementares;
     private $ativo;
-
+    private $versaoEsquema;
 
     public function setCidadePrestacao(CidadePrestacao $cidadePrestacao)
     {
@@ -255,6 +255,16 @@ class Nfse extends BuilderAbstract implements IDfe
     public function getAtivo()
     {
         return $this->ativo;
+    }
+
+    public function setVersaoEsquema($versao)
+    {
+        $this->versaoEsquema = $versao;
+    }
+
+    public function getVersaoEsquema()
+    {
+        return $this->versaoEsquema;
     }
 
     public function validate()
