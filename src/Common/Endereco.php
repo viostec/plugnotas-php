@@ -14,10 +14,12 @@ class Endereco extends BuilderAbstract
     private $tipoBairro;
     private $bairro;
     private $codigoPais;
+    private $codigoPostalExterior;
     private $descricaoPais;
     private $codigoCidade;
     private $descricaoCidade;
     private $estado;
+    private $estadoProvinciaRegiao;
     private $cep;
 
     public function getTipoLogradouro()
@@ -155,7 +157,7 @@ class Endereco extends BuilderAbstract
     {
         $this->codigoPais = $codigoPais;
     }
-    
+
     public function getDescricaoPais()
     {
         return $this->descricaoPais;
@@ -164,6 +166,18 @@ class Endereco extends BuilderAbstract
     public function setDescricaoPais($descricaoPais)
     {
         $this->descricaoPais = $descricaoPais;
+    }
+
+    public function getCodigoPostalExterior(): ?string
+    {
+        return $this->codigoPostalExterior;
+    }
+
+    public function setCodigoPostalExterior(?string $codigoPostalExterior): self
+    {
+        $this->codigoPostalExterior = $codigoPostalExterior;
+
+        return $this;
     }
 
     public function getCodigoCidade()
@@ -237,6 +251,18 @@ class Endereco extends BuilderAbstract
         }
 
         $this->estado = strtoupper($estado);
+    }
+
+    public function getEstadoProvinciaRegiao(): ?string
+    {
+        return $this->estadoProvinciaRegiao;
+    }
+
+    public function setEstadoProvinciaRegiao(?string $estadoProvinciaRegiao): self
+    {
+        $this->estadoProvinciaRegiao = $estadoProvinciaRegiao;
+
+        return $this;
     }
 
     public function getCep()

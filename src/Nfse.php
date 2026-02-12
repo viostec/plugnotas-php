@@ -46,7 +46,8 @@ class Nfse extends BuilderAbstract implements IDfe
     private $parcelas;
     private $informacoesComplementares;
     private $ativo;
-    private $versaoEsquema;
+
+    private ?string $versaoEsquema = null;
 
     public function setCidadePrestacao(CidadePrestacao $cidadePrestacao)
     {
@@ -257,12 +258,14 @@ class Nfse extends BuilderAbstract implements IDfe
         return $this->ativo;
     }
 
-    public function setVersaoEsquema($versao)
+    public function setVersaoEsquema(string $versao): self
     {
         $this->versaoEsquema = $versao;
+
+        return $this;
     }
 
-    public function getVersaoEsquema()
+    public function getVersaoEsquema(): ?string
     {
         return $this->versaoEsquema;
     }

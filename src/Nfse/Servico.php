@@ -11,6 +11,7 @@ use TecnoSpeed\Plugnotas\Error\RequiredError;
 use TecnoSpeed\Plugnotas\Error\ValidationError;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Deducao;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Evento;
+use TecnoSpeed\Plugnotas\Nfse\Servico\IbsCbs;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Iss;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Obra;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Retencao;
@@ -25,12 +26,17 @@ class Servico extends BuilderAbstract
     private $cnae;
     private $codigo;
     private $codigoCidadeIncidencia;
-    private $codigoNbs;
+
+    private ?string $codigoNbs = null;
+
     private $codigoTributacao;
     private $deducao;
     private $descricaoCidadeIncidencia;
     private $discriminacao;
     private $evento;
+
+    private ?IbsCbs $ibscbs = null;
+
     private $id;
     private $idIntegracao;
     private $informacoesLegais;
@@ -74,14 +80,16 @@ class Servico extends BuilderAbstract
         return $this->codigoCidadeIncidencia;
     }
 
-    public function setCodigoNbs($codigo)
-    {
-        $this->codigoNbs = $codigo;
-    }
-
-    public function getCodigoNbs()
+    public function getCodigoNbs(): ?string
     {
         return $this->codigoNbs;
+    }
+
+    public function setCodigoNbs(?string $codigo): self
+    {
+        $this->codigoNbs = $codigo;
+
+        return $this;
     }
 
     public function setCodigoTributacao($codigoTributacao)
@@ -132,6 +140,18 @@ class Servico extends BuilderAbstract
     public function getEvento()
     {
         return $this->evento;
+    }
+
+    public function getIbscbs(): ?Ibscbs
+    {
+        return $this->ibscbs;
+    }
+
+    public function setIbscbs(?Ibscbs $ibscbs): self
+    {
+        $this->ibscbs = $ibscbs;
+
+        return $this;
     }
 
     public function setId($id)
