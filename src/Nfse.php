@@ -34,7 +34,9 @@ class Nfse extends BuilderAbstract implements IDfe
     private $prestador;
     private $regimeApuracaoTributaria;
     private $rps;
-    private $servico;
+
+    private Servico $servico;
+
     private $substituicao;
     private $tomador;
     private $intermediario;
@@ -47,7 +49,7 @@ class Nfse extends BuilderAbstract implements IDfe
     private $informacoesComplementares;
     private $ativo;
 
-    private ?string $versaoEsquema = null;
+    private ?string $versaoEsquema;
 
     public function setCidadePrestacao(CidadePrestacao $cidadePrestacao)
     {
@@ -146,14 +148,16 @@ class Nfse extends BuilderAbstract implements IDfe
         return $this->rps;
     }
 
-    public function setServico(array $servicos)
-    {
-        $this->servico = $servicos;
-    }
-
-    public function getServico()
+    public function getServico(): ?Servico
     {
         return $this->servico;
+    }
+
+    public function setServico(?Servico $servico): self
+    {
+        $this->servico = $servico;
+
+        return $this;
     }
 
     public function setSubstituicao($substituicao)
@@ -277,7 +281,8 @@ class Nfse extends BuilderAbstract implements IDfe
         $validateHasPrestadorCpfCnpj = v::allOf(
             v::keyNested('prestador.cpfCnpj')
         )->validate($data);
-        $validateArrayServices = $this->validateArrayServices($data['servico']);
+
+        $validateArrayServices = $this->validateArrayServices($this->getServico()?->toArray() ?? []);
 
         $validateData = $validateHasPrestadorCpfCnpj && $validateArrayServices;
 
@@ -290,7 +295,7 @@ class Nfse extends BuilderAbstract implements IDfe
         return true;
     }
 
-    private function validateArrayServices($servico): bool
+    private function validateArrayServices(array $servico): bool
     {
         $validateServices = v::arrayVal()->each(
             v::oneOf(
