@@ -34,9 +34,7 @@ class Nfse extends BuilderAbstract implements IDfe
     private $prestador;
     private $regimeApuracaoTributaria;
     private $rps;
-
-    private Servico $servico;
-
+    private $servico;
     private $substituicao;
     private $tomador;
     private $intermediario;
@@ -148,16 +146,14 @@ class Nfse extends BuilderAbstract implements IDfe
         return $this->rps;
     }
 
-    public function getServico(): ?Servico
+    public function getServico(): array
     {
         return $this->servico;
     }
 
-    public function setServico(?Servico $servico): self
+    public function setServico(array $servicos)
     {
-        $this->servico = $servico;
-
-        return $this;
+        $this->servico = $servicos;
     }
 
     public function setSubstituicao($substituicao)
@@ -282,7 +278,7 @@ class Nfse extends BuilderAbstract implements IDfe
             v::keyNested('prestador.cpfCnpj')
         )->validate($data);
 
-        $validateArrayServices = $this->validateArrayServices($this->getServico()?->toArray() ?? []);
+        $validateArrayServices = $this->validateArrayServices($data['servico']);
 
         $validateData = $validateHasPrestadorCpfCnpj && $validateArrayServices;
 
@@ -295,7 +291,7 @@ class Nfse extends BuilderAbstract implements IDfe
         return true;
     }
 
-    private function validateArrayServices(array $servico): bool
+    private function validateArrayServices($servico): bool
     {
         $validateServices = v::arrayVal()->each(
             v::oneOf(
