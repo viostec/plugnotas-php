@@ -10,9 +10,9 @@ use TecnoSpeed\Plugnotas\Nfse\Servico\IbsCbs\Valores\Tributacao\Regular;
 
 final class Tributacao extends BuilderAbstract
 {
-    private ?int $cst = null;
+    private ?string $cst = null;
 
-    private ?int $cct = null;
+    private ?string $cct = null;
 
     private ?string $codigoCreditoPresumido = null;
 
@@ -20,12 +20,12 @@ final class Tributacao extends BuilderAbstract
 
     private ?Diferimento $diferimento = null;
 
-    public function getCst(): ?int
+    public function getCst(): ?string
     {
         return $this->cst;
     }
 
-    public function getCct(): ?int
+    public function getCct(): ?string
     {
         return $this->cct;
     }
@@ -45,14 +45,14 @@ final class Tributacao extends BuilderAbstract
         return $this->diferimento;
     }
 
-    public function setCst(?int $cst): self
+    public function setCst(?string $cst): self
     {
         $this->cst = $cst;
 
         return $this;
     }
 
-    public function setCct(?int $cct): self
+    public function setCct(?string $cct): self
     {
         $this->cct = $cct;
 
