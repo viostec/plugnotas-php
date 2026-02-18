@@ -47,7 +47,7 @@ class Nfse extends BuilderAbstract implements IDfe
     private $informacoesComplementares;
     private $ativo;
 
-    private ?string $versaoEsquema;
+    private ?string $versaoEsquema = null;
 
     public function setCidadePrestacao(CidadePrestacao $cidadePrestacao)
     {
