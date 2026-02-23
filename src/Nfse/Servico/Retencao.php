@@ -18,6 +18,8 @@ class Retencao extends BuilderAbstract
     private $pis;
     private $cpp;
 
+    private ?string $tipoRetencaoPisCofinsCSLL = null;
+
     public function setCofins(PisCofinsValorAliquota $cofins)
     {
         $this->cofins = $cofins;
@@ -86,6 +88,19 @@ class Retencao extends BuilderAbstract
     {
         return $this->cpp;
     }
+
+    public function getTipoRetencaoPisCofinsCSLL(): ?string
+    {
+        return $this->tipoRetencaoPisCofinsCSLL;
+    }
+
+    public function setTipoRetencaoPisCofinsCSLL(?int $tipo): self
+    {
+        $this->tipoRetencaoPisCofinsCSLL = is_null($tipo) ? null : (string) $tipo;
+
+        return $this;
+    }
+
     public static function fromArray($data)
     {
         $retencao = new Retencao();
