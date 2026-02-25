@@ -2,10 +2,10 @@
 
 namespace TecnoSpeed\Plugnotas\Abstracts;
 
-use FerFabricio\Hydrator\Extract;
 use FerFabricio\Hydrator\Hydrate;
 use TecnoSpeed\Plugnotas\Error\InvalidTypeError;
 use TecnoSpeed\Plugnotas\Interfaces\IBuilder;
+use TecnoSpeed\Plugnotas\Servico\Extract;
 
 abstract class BuilderAbstract implements IBuilder
 {

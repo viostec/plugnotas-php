@@ -93,12 +93,22 @@ class ServicoTest extends TestCase
         $obra->setCodigo('21');
 
         $retencao = new Retencao();
-        $retencao->setCofins(new PisCofinsValorAliquota(100.10, 1.01, 0.02));
+        $retencao->setCofins(
+            (new PisCofinsValorAliquota())
+                ->setValor(100.10)
+                ->setAliquota(1.01)
+                ->setCst(2)
+        );
         $retencao->setCsll(new ValorAliquota(202.20, 2.02));
         $retencao->setInss(new ValorAliquota(303.30, 3.03));
         $retencao->setIrrf(new ValorAliquota(404.40, 4.04));
         $retencao->setOutrasRetencoes(new ValorAliquota(505.50, 5.05));
-        $retencao->setPis(new PisCofinsValorAliquota(606.60, 6.06,0.01));
+        $retencao->setPis(
+            (new PisCofinsValorAliquota())
+                ->setValor(606.60)
+                ->setAliquota(6.06)
+                ->setCst(1)
+        );
 
         $valor = new Valor();
         $valor->setBaseCalculo(0.01);

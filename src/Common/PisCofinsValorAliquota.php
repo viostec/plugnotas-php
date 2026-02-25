@@ -8,71 +8,63 @@ use TecnoSpeed\Plugnotas\Error\ValidationError;
 
 class PisCofinsValorAliquota extends BuilderAbstract
 {
-    private $aliquota;
-    private $valor;
-    private $cst;
+    private ?float $aliquota = null;
 
-    private $retido;
+    private ?string $cst = null;
 
-    public function __construct($valor = 0, $aliquota = 0, $cst = 0)
-    {
-        $this->setAliquota($aliquota);
-        $this->setValor($valor);
-        $this->setCst($cst);
-    }
+    private ?bool $retido = null;
 
-    public function setValor($valor)
-    {
-        if (!v::NumericVal()->validate($valor)) {
-            throw new ValidationError(
-                'Valor deve ser um número.'
-            );
-        }
-        $this->valor = $valor;
-    }
+    private ?float $valor = null;
 
-    public function getValor()
-    {
-        return $this->valor;
-    }
-
-    public function setAliquota($aliquota)
-    {
-        if (!v::NumericVal()->validate($aliquota)) {
-            throw new ValidationError(
-                'Aliquota deve ser um número.'
-            );
-        }
-        $this->aliquota = $aliquota;
-    }
-
-    public function getAliquota()
+    public function getAliquota(): ?float
     {
         return $this->aliquota;
     }
 
-    public function setCst($cst)
+    public function getCst(): ?string
     {
-        if (!v::NumericVal()->validate($cst)) {
-            throw new ValidationError(
-                'Aliquota deve ser um número.'
-            );
-        }
-        $this->cst = $cst;
-    }
-
-    public function getCst()
-    {
-        return $this->cst;
-    }
-
-    public function setRetido(bool $retido): void
-    {
-        $this->retido = $retido;
+        return is_null($this->cst) ? null : str_pad($this->cst, 2, '0', STR_PAD_LEFT);
     }
 
     public function getRetido(): ?bool
     {
         return $this->retido;
+    }
+
+    public function getValor(): ?float
+    {
+        return $this->valor;
+    }
+
+    public function setAliquota(?float $aliquota): self
+    {
+        $this->aliquota = $aliquota;
+
+        return $this;
+    }
+
+    public function setCst(?int $cst): self
+    {
+        if (!is_null($cst) && ($cst < 0 || $cst > 9)) {
+            throw new ValidationError('Código de Situação Tributária do PIS não suportado');
+        }
+
+        $this->cst = $cst;
+
+        return $this;
+    }
+
+    public function setRetido(?bool $retido): self
+    {
+        $this->retido = $retido;
+
+        return $this;
+    }
+
+    public function setValor(?float $valor = null): self
+    {
+        $this->valor = $valor;
+
+        return $this;
     }
 }

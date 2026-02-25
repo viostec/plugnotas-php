@@ -126,8 +126,18 @@ try {
     $obra->setCei('12345678910');
 
     $retencao = new Retencao();
-    $retencao->setPis(new PisCofinsValorAliquota(606.60, 6.06, 0.00));
-    $retencao->setCofins(new PisCofinsValorAliquota(100.10, 1.01,0.00));
+    $retencao->setPis(
+        (new PisCofinsValorAliquota())
+            ->setValor(606.60)
+            ->setAliquota(6.06)
+            ->setCst(0)
+    );
+    $retencao->setCofins(
+        (new PisCofinsValorAliquota())
+            ->setValor(100.10)
+            ->setAliquota(1.01)
+            ->setCst(0)
+    );
     $retencao->setCsll(new ValorAliquota(202.20, 2.02));
     $retencao->setInss(new ValorAliquota(303.30, 3.03));
     $retencao->setIrrf(new ValorAliquota(404.40, 4.04));
