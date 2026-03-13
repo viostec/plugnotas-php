@@ -17,7 +17,7 @@ class CallApi
     {
         $this->client = new \GuzzleHttp\Client([
             'base_uri' => $configuration->getUrl(),
-            'timeout' => 60.0,
+            'timeout' => 120.0,
             'connect_timeout' => 10.0,
         ]);
         $this->headers = [
