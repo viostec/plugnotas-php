@@ -44,7 +44,7 @@ class Tomador extends BuilderAbstract
         }
 
         if (strlen($cleanCpfCnpj) === 11) {
-            if (!v::cpf()->validate($cleanCpfCnpj)) {
+            if ($cleanCpfCnpj != '99999999999' && !v::cpf()->validate($cleanCpfCnpj)) {
                 throw new ValidationError(
                     'CPF inválido.'
                 );
