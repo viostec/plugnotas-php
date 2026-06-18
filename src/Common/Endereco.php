@@ -242,7 +242,8 @@ class Endereco extends BuilderAbstract
             'SC',
             'SE',
             'SP',
-            'TO'
+            'TO',
+            'EX',
         ];
         if (!in_array(strtoupper($estado), $allowedStates)) {
             throw new ValidationError(
