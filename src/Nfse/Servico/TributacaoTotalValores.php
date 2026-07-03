@@ -8,8 +8,8 @@ use TecnoSpeed\Plugnotas\Abstracts\BuilderAbstract;
 
 final class TributacaoTotalValores extends BuilderAbstract
 {
-    private float $valor;
-    private float $valorPercentual;
+    private float $valor = 0;
+    private float $valorPercentual = 0;
 
     public function getValor(): float
     {

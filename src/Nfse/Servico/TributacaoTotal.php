@@ -9,9 +9,9 @@ use TecnoSpeed\Plugnotas\Abstracts\BuilderAbstract;
 final class TributacaoTotal extends BuilderAbstract
 {
     private float $aliquotaSimplesNacional = 0;
-    private TributacaoTotalValores $estadual;
-    private TributacaoTotalValores $federal;
-    private TributacaoTotalValores $municipal;
+    private ?TributacaoTotalValores $estadual = null;
+    private ?TributacaoTotalValores $federal = null;
+    private ?TributacaoTotalValores $municipal = null;
 
     public function getAliquotaSimplesNacional(): float
     {
