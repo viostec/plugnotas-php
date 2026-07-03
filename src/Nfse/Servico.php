@@ -15,6 +15,7 @@ use TecnoSpeed\Plugnotas\Nfse\Servico\IbsCbs;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Iss;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Obra;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Retencao;
+use TecnoSpeed\Plugnotas\Nfse\Servico\TributacaoTotal;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Valor;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Ibpt;
 use TecnoSpeed\Plugnotas\Traits\Communication;
@@ -46,6 +47,7 @@ class Servico extends BuilderAbstract
     private $valor;
     private $unidade;
     private $quantidade;
+    private TributacaoTotal $tributacaoTotal;
     private $tributavel;
     private $responsavelRetencao;
     private $ibpt;
@@ -261,13 +263,22 @@ class Servico extends BuilderAbstract
         return $this->tributavel;
     }
 
-    public function setResponsavelRetencao($responsavelRetencao){
-    if (!v::in([1,2])->validate($responsavelRetencao)) {
-        throw new ValidationError(
-            'Responsável Retencao inválido.'
-        );
+    public function getTributacaoTotal(): ?TributacaoTotal
+    {
+        return $this->tributacaoTotal;
     }
-    $this->responsavelRetencao = $responsavelRetencao;
+
+    public function setTributacaoTotal(TributacaoTotal $tributacaoTotal): void
+    {
+        $this->tributacaoTotal = $tributacaoTotal;
+    }
+    public function setResponsavelRetencao($responsavelRetencao){
+        if (!v::in([1,2])->validate($responsavelRetencao)) {
+            throw new ValidationError(
+                'Responsável Retencao inválido.'
+            );
+        }
+        $this->responsavelRetencao = $responsavelRetencao;
 
     }
 
