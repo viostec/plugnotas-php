@@ -47,7 +47,7 @@ class Servico extends BuilderAbstract
     private $valor;
     private $unidade;
     private $quantidade;
-    private TributacaoTotal $tributacaoTotal;
+    private ?TributacaoTotal $tributacaoTotal = null;
     private $tributavel;
     private $responsavelRetencao;
     private $ibpt;
@@ -268,7 +268,7 @@ class Servico extends BuilderAbstract
         return $this->tributacaoTotal;
     }
 
-    public function setTributacaoTotal(TributacaoTotal $tributacaoTotal): void
+    public function setTributacaoTotal(?TributacaoTotal $tributacaoTotal): void
     {
         $this->tributacaoTotal = $tributacaoTotal;
     }
